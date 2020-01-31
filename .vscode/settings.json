@@ -1,0 +1,3 @@
+{
+    "cucumberautocomplete.steps" : "e2e/stepdefs/*.ts"
+}

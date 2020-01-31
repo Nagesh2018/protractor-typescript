@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    
+stages { 
+        stage('Build') {
+        steps {
+        echo 'Building..'
+        bat label: '', script: 'npm install'
+        }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                bat label: '', script: 'npm run regTest'
+               }
+        }      
+    
+        }
+post {
+failure {
+echo "Test failed"
+cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/cucumberReport.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+}
+success {
+echo "Test Passed"
+cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/cucumberReport.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+}
+  }
+    
+}

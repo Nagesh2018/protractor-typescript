@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "pretest": "tsc",
+    "preregTest": "tsc",
+    "presmokeTest" : "tsc",
     "protractor": "./node_modules/protractor/built/cli.js",
     "wd-update": "./node_modules/.bin/webdriver-manager update",
     "wd-start" : "./node_modules/.bin/webdriver-manager start --detach",
     "tests" : "protractor ./ConvertedJSFiles/configuration.js",
-    "test": "npm run wd-update && npm run wd-start && npm run tests"
+    "cucumbersmoke" :"protractor ./ConvertedJSFiles/cucumberconfig.js --suite smoke",
+    "cucumberreg" :"protractor ./ConvertedJSFiles/cucumberconfig.js --suite regression",
+    "smokeTest": "npm run wd-update && npm run wd-start && npm run cucumbersmoke",
+    "regTest": "npm run wd-update && npm run wd-start && npm run cucumberreg"
   },
   "author": "Nagesh S",
   "license": "ISC",

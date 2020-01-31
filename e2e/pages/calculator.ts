@@ -6,6 +6,7 @@ export class calculator {
     secondInput : ElementFinder;
     goBtn : ElementFinder;
     testRes: ElementFinder;
+    
     constructor(){
         this.firstInput = element(by.model("first"));
         this.secondInput = element(by.model("second"));
